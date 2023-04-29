@@ -14,3 +14,5 @@ def get_user_info(user: User) -> str:
 user_1: User = User(42, 'Vasiliy', 23, 'vasya_pupkin@pochta.ru')
 print(get_user_info(user_1))
 
+### 45
+
