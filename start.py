@@ -1,28 +1,26 @@
-class User:
-    def __init__(self, user_id, name, age, email):
-        self.user_id = user_id
-        self.name = name
-        self.age = age
-        self.email = email
-
-
-def get_user_info(user: User) -> str:
-    return f'Возраст пользователя {user.name} - {user.age}, ' \
-           f'а email - {user.email}'
-
-
-user_1: User = User(42, 'Vasiliy', 23, 'vasya_pupkin@pochta.ru')
-print(get_user_info(user_1))
-
 import requests
+import time
 
 
-api_url = 'http://api.open-notify.org/iss-now.json'
+API_URL: str = 'https://api.telegram.org/bot'
+BOT_TOKEN: str = '1214625504:AAEC5qSw0dJiW9AU3VJLjlCptje22x9TGTA'
+offset: int = -2
+updates: dict
 
-response = requests.get(api_url)   # Отправляем GET-запрос и сохраняем ответ в переменной response
 
-if response.status_code == 200:    # Если код ответа на запрос - 200, то смотрим, что пришло в ответе
-    print(response.text)
-else:
-    print(response.status_code)    # При другом коде ответа выводим этот код
+def do_something() -> None:
+    print('Был апдейт')
 
+
+while True:
+    start_time = time.time()
+    updates = requests.get(f'{API_URL}{BOT_TOKEN}/getUpdates?offset={offset + 1}').json()
+
+    if updates['result']:
+        for result in updates['result']:
+            offset = result['update_id']
+            do_something()
+
+    time.sleep(3)
+    end_time = time.time()
+    print(f'Время между запросами к Telegram Bot API: {end_time - start_time}')
