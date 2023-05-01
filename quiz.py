@@ -21,6 +21,11 @@ user: dict = {'in_game': False,
               'attempts': None,
               'total_games': 0,
               'wins': 0}
+
+
+# Словарь, в котором будут храниться данные пользователя
+users: dict = {}
+
 # Функция возвращающая случайное целое число от 1 до 100
 def get_random_number() -> int:
     return random.randint(1, 100)
@@ -43,11 +48,19 @@ async def process_help_command(message: Message):
                          f'/stat - посмотреть статистику\n\nДавай сыграем?')
 
 
-# Этот хэндлер будет срабатывать на команду "/stat"
+# Этот хэндлер будет срабатывать на команду "/start"
 @dp.message(Command(commands=['stat']))
 async def process_stat_command(message: Message):
     await message.answer(f'Всего игр сыграно: {user["total_games"]}\n'
                          f'Игр выиграно: {user["wins"]}')
+    # Если пользователь только запустил бота и его нет в словаре '
+    # 'users - добавляем его в словарь
+    if message.from_user.id not in users:
+        users[message.from_user.id] = {'in_game': False,
+                                       'secret_number': None,
+                                       'attempts': None,
+                                       'total_games': 0,
+                                       'wins': 0}
 
 
 # Этот хэндлер будет срабатывать на команду "/cancel"
