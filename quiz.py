@@ -14,7 +14,7 @@ bot: Bot = Bot(BOT_TOKEN)
 dp: Dispatcher = Dispatcher()
 
 # Количество попыток, доступных пользователю в игре
-ATTEMPTS: int = 5
+ATTEMPTS: int = 15
 
 user: dict = {'in_game': False,
               'secret_number': None,
