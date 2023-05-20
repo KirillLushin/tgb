@@ -2,6 +2,7 @@ from aiogram import Bot, Dispatcher
 from aiogram.filters import BaseFilter
 from aiogram.types import Message
 
+
 # Вместо BOT TOKEN HERE нужно вставить токен вашего бота,
 # полученный у @BotFather
 API_TOKEN: str = '1214625504:AAEC5qSw0dJiW9AU3VJLjlCptje22x9TGTA'
@@ -10,9 +11,9 @@ API_TOKEN: str = '1214625504:AAEC5qSw0dJiW9AU3VJLjlCptje22x9TGTA'
 bot: Bot = Bot(token=API_TOKEN)
 dp: Dispatcher = Dispatcher()
 
+
 # Список с ID администраторов бота. !!!Замените на ваш!!!
 admin_ids: list[int] = [52054952]
-
 
 # Собственный фильтр, проверяющий юзера на админа
 class IsAdmin(BaseFilter):
@@ -34,6 +35,9 @@ async def answer_if_admins_update(message: Message):
 @dp.message()
 async def answer_if_not_admins_update(message: Message):
     await message.answer(text='Вы не админ')
+
+
+
 
 
 if __name__ == '__main__':
