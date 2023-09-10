@@ -3,7 +3,7 @@ import json
 
 count = 0
 miners = []
-for i in range(0, 20):
+for i in range(0, 15):
     url = f"https://blockchain.info/block-height/{34}?format=json"
     r = urllib.request.urlopen(url)
     data = json.load(r)
