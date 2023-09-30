@@ -35,7 +35,7 @@ async def send_echo(message: Message):
 
 
 # Этот хэндлер будет срабатывать на отправку боту фото
-async def send_photo_echo(message: Message):
+a
     print(message)
     await message.reply_photo(message.photo[0].file_id)
 
