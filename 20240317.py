@@ -1,3 +1,2 @@
-number_1 = input()
-number_1 = float(number_1)
-print(round(number_1))
+spisok = ["cat", "dog", "banana", "water"]
+print(spisok[-2:])
