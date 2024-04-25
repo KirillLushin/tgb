@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 import time
 
 url = 'https://happypython.ru/about_us/'
-service = Service(executable_path='C:/chromedriver/chromedriver')  # указываем путь до драйвера
+service = Service(executable_path='C:\Users\USER\.cache\selenium\chromedriver\win64\')  # указываем путь до драйвера
 browser = webdriver.Chrome(service=service)
 try:
     browser.get(url)
